@@ -24,9 +24,9 @@ def check_if_number(n) :
     except ValueError :
         return False
 
-# get User Account Information
+# Get user account information
 def get_userinfo() :
-    # Account Holder Name
+    # Sanitized account holder name
     sanitized_name = []
     name = input('What is your name? ').lower()
     name_list = name.split()
@@ -35,7 +35,7 @@ def get_userinfo() :
         sanitized_name.append(string)
     sanitized_name_str = ' '.join(sanitized_name)
 
-    # Sanitized Account Number
+    # Sanitized account number
     sanitize_acct_num = []
     acct_num = input('Enter your 10-digit account number(ex: 1010101010):  ')
     print(f'\n{dashes}')
@@ -108,7 +108,7 @@ def withdraw(balance) :
             add_transaction(withdrawal)
             return amount   
             
-# Main bank appt while interacting with user:  
+# Main transaction activity interacting with user
 def main() :
     balance = 0
     global transactions
