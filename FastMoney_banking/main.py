@@ -16,7 +16,7 @@ def clear_screen():
     else:
         os.system("clear")
 
-# validate integers for floats from user inputs
+# Validate integers for floats from user inputs
 def check_if_number(n) :
     try :
         float(n)
