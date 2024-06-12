@@ -18,7 +18,7 @@ def clear_screen():
 
 # Validate integers for floats from user inputs
 def check_if_number(n):
-    try :
+    try:
         float(n)
         return True
     except ValueError:
@@ -43,7 +43,7 @@ def get_userinfo():
         print('Account number is not 10 digits long.')
         acct_num = input('Enter your 10-digit account number(ex: 1010101010):  ')
     for i, num in enumerate(acct_num):
-        if i <= 5 :
+        if i <= 5:
             sanitize_acct_num.append('*')
         else :
             sanitize_acct_num.append(str(num))      
