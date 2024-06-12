@@ -17,20 +17,20 @@ def clear_screen():
         os.system("clear")
 
 # Validate integers for floats from user inputs
-def check_if_number(n) :
+def check_if_number(n):
     try :
         float(n)
         return True
-    except ValueError :
+    except ValueError:
         return False
 
 # Get user account information
-def get_userinfo() :
+def get_userinfo():
     # Sanitized account holder name
     sanitized_name = []
     name = input('What is your name? ').lower()
     name_list = name.split()
-    for element in name_list :
+    for element in name_list:
         string = element[0].capitalize() + element[1:]
         sanitized_name.append(string)
     sanitized_name_str = ' '.join(sanitized_name)
@@ -39,10 +39,10 @@ def get_userinfo() :
     sanitize_acct_num = []
     acct_num = input('Enter your 10-digit account number(ex: 1010101010):  ')
     print(f'\n{dashes}')
-    if len(acct_num) < 10 :
+    if len(acct_num) < 10:
         print('Account number is not 10 digits long.')
         acct_num = input('Enter your 10-digit account number(ex: 1010101010):  ')
-    for i, num in enumerate(acct_num) :
+    for i, num in enumerate(acct_num):
         if i <= 5 :
             sanitize_acct_num.append('*')
         else :
@@ -70,18 +70,18 @@ def print_transactions():
         print("No transactions available.")
 
 # Function to print the current balance for request 1:   
-def show_balance(balance) :
+def show_balance(balance):
     curr_balance = f'$ {balance:,.2f}\n'
     print('\nYour current balance: ', curr_balance)
 
 # Function to deposit amount given, update balance and add to transactions:
-def deposit() : 
+def deposit(): 
     print('\nMake a Deposit: \n')
     amount = input('Enter the amount to be deposited. $ ')
     valid_amount = check_if_number(amount)
-    if valid_amount :
+    if valid_amount:
         amount = float(amount)
-        if amount > 0 :
+        if amount > 0:
             deposit = f'Deposit: $ {amount:,.2f}'
             add_transaction(deposit)
             return amount
@@ -90,26 +90,26 @@ def deposit() :
         return 0
 
 # Function to withdraw amount given, update balance and add to transactions:   
-def withdraw(balance) :
+def withdraw(balance):
     print('\nMake a Withdrawal: \n')
     amount = input('Enter amount to be withdrawn: $ ')
     valid_amt = check_if_number(amount)
-    if valid_amt :
+    if valid_amt:
         amount = float(amount)
-        if amount > balance :
+        if amount > balance:
             print(f'\nInsufficient funds. Your balance is ${balance:,.2f}.\n')
             print(f'{dashes}\n')
             return 0
-        elif amount < 0 :
+        elif amount < 0:
             print('Amount must be greater than zero.\n')
             return 0
-        else :
+        else:
             withdrawal = f'Withdrawal: $ {amount:,.2f}'
             add_transaction(withdrawal)
             return amount   
             
 # Main transaction activity interacting with user
-def main() :
+def main():
     balance = 0
     global transactions
     is_running = True
@@ -118,7 +118,8 @@ def main() :
     print(f'{dashes}\n')
     name, acct_num = get_userinfo()
     clear_screen()
-    while is_running :
+    
+    while is_running:
         now = datetime.datetime.now()
         date_time_str = now.strftime("%B %d, %Y %I:%M %p").lower()
         date_time_str = date_time_str.lstrip('0').replace(' 0', ' ')
@@ -135,21 +136,22 @@ def main() :
         print('5. Exit Bank Program')
         choice = input("Enter your bank choice (1-5):  ")
         clear_screen()
-        if choice == '1' :
+        
+        if choice == '1':
             show_balance(balance)
-        elif choice == '2' :
+        elif choice == '2':
             balance += deposit()
             show_balance(balance)
-        elif choice == '3' :
+        elif choice == '3':
             balance -= withdraw(balance)
             show_balance(balance)
-        elif choice == '4' :
+        elif choice == '4':
             print_transactions()
             show_balance(balance)
             is_running = True          
-        elif choice == '5' :
+        elif choice == '5':
             is_running = False
-        else :
+        else:
             print('\nThat is not a valid choice.')
             print(f'{dashes}\n')
 
@@ -157,7 +159,7 @@ def main() :
     clear_screen()
     print(f'\n{dashes}')
     print('\nThank you for using FastMoney Banking!\n')
-    if __name__=='__main__' :
+    if __name__=='__main__':
         main()
 
 # Start Banking
