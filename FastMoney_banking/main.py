@@ -1,5 +1,4 @@
 # FastMoney Banking
-# Need to build out frontend and validation for users and database
 import datetime 
 import os
 import platform
